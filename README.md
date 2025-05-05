@@ -1,46 +1,34 @@
-# Getting Started with Create React App
+# 怒氣發洩同事詛咒機
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+這是一個用於發洩職場壓力的趣味小遊戲。你可以選擇一位「同事」角色，然後透過點擊互動來累積怒氣，最終獲得專屬詛咒語錄！
+本專案以 React + TypeScript 製作，並結合 TailwindCSS 與多媒體互動效果。
 
-## Available Scripts
+## 功能特色
 
-In the project directory, you can run:
+- 選擇不同的同事角色（可自訂職位名稱）
+- 點擊角色發洩怒氣，怒氣值累積
+- 怒氣爆表後，隨機顯示詛咒語錄
+- 多種互動音效與動畫
+- 支援自訂角色名稱
+
+## 安裝與啟動
+
+### `npm install`
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+啟動後瀏覽器會自動開啟 http://localhost:3000
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 目錄結構簡介
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `src/components/`：自訂 React 元件（角色、怒氣條、詛咒文字等）
+- `src/data/curses.js`：詛咒語錄資料
+- `src/assets/`：角色圖片、道具圖片、動畫等多媒體資源
+- `src/App.tsx`：主要應用程式邏輯
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 其他說明
+- 本專案以 Create React App 建立。
+- 若需自訂詛咒語錄，可編輯 src/data/curses.js。
+- 若需自訂角色圖片，請將圖片放入 src/assets/ 並依照命名規則。
