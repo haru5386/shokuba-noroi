@@ -4,6 +4,7 @@ import type { FC } from "react";
 import type { Item } from "../index.type";
 import EnterMode from "../components/EnterMode";
 import HitMode from "../components/HitMode";
+import Head from "next/head";
 
 const characterImgs: string[] = Array.from(
   { length: 8 },
@@ -110,6 +111,19 @@ const Home: FC = () => {
 
   return (
     <>
+      <Head>
+        <title>怒氣發洩同事詛咒機</title>
+        <meta
+          name="description"
+          content="用幽默詛咒語錄發洩職場怒氣，支援 OpenAI 與 Redis 快取，體驗最紓壓的同事詛咒小遊戲！"
+        />
+        <meta property="og:title" content="怒氣發洩同事詛咒機" />
+        <meta
+          property="og:description"
+          content="用幽默詛咒語錄發洩職場怒氣，支援 OpenAI 與 Redis 快取，體驗最紓壓的同事詛咒小遊戲！"
+        />
+        <meta property="og:type" content="website" />
+      </Head>
       {step === 1 ? (
         <EnterMode
           onSubmit={onSubmit}
