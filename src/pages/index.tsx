@@ -1,8 +1,4 @@
 import React, { useState, useRef } from "react";
-import Character from "../components/Character";
-import RageBar from "../components/RageBar";
-import CurseText from "../components/CurseText";
-import ClickOverlay from "../components/ClickOverlay";
 import { Howl } from "howler";
 import type { FC } from "react";
 import type { Item } from "../index.type";
