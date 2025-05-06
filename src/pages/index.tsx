@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Howl } from "howler";
 import type { FC } from "react";
 import type { Item } from "../index.type";
 import EnterMode from "../components/EnterMode";
@@ -37,7 +38,15 @@ const Home: FC = () => {
   const [curseText, setCurseText] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const punchSoundRef = useRef<Howl | null>(null);
+  const bombSoundRef = useRef<Howl | null>(null);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      punchSoundRef.current = new Howl({ src: ["/sounds/punch.mp3"] });
+      bombSoundRef.current = new Howl({ src: ["/sounds/bomb.mp3"] });
+    }
+  }, []);
 
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -61,6 +70,7 @@ const Home: FC = () => {
   // 發洩模式
   const handleRageClick = async ({ x, y }: { x: number; y: number }) => {
     if (rage >= 30) return;
+    punchSoundRef.current?.play();
     setRage(rage + 1);
     setItems([
       ...items,
@@ -88,6 +98,7 @@ const Home: FC = () => {
         setIsLoading(false);
         setShowCurse(true);
       }
+      bombSoundRef.current?.play();
     }, 1500);
   };
 
