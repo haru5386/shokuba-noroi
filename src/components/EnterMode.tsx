@@ -3,7 +3,7 @@ import Character from './Character';
 type EnterModeProps = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   onSelectCharacter: (direction: "left" | "right") => void;
-  onSelectRole: (role: string) => void;
+  onSelectRole: (role: string, customRole: string) => void;
   characterImgs: string[];
   defaultRoles: string[];
   characterIdx: number;
@@ -47,7 +47,7 @@ const EnterMode = ({ onSubmit, onSelectCharacter, onSelectRole, characterImgs, d
                   ? "bg-blue-200 border-blue-500"
                   : "bg-white border-gray-300"
               }`}
-              onClick={() => onSelectRole(r)}
+              onClick={() => onSelectRole(r, '')}
             >
               {r}
             </button>
@@ -58,7 +58,7 @@ const EnterMode = ({ onSubmit, onSelectCharacter, onSelectRole, characterImgs, d
           placeholder="自行輸入..."
           value={customRole}
           maxLength={10}
-          onChange={(e) => onSelectRole(e.target.value)}
+          onChange={(e) => onSelectRole(e.target.value, e.target.value)}
         />
         <button
           type="submit"
