@@ -8,6 +8,7 @@
 - 選擇不同的同事角色（可自訂職位名稱）
 - 點擊角色發洩怒氣，怒氣值累積
 - 怒氣爆表後，隨機顯示詛咒語錄（由 OpenAI API 產生，失敗時 fallback 本地語錄）
+- 使用 Redis 快取機制，提升回應速度並節省 API 用量
 - 多種互動音效與動畫
 - 支援自訂角色名稱
 
@@ -20,7 +21,12 @@
 
 2. **設定環境變數**
    - 在專案根目錄建立 `.env.local` 檔案
-   - 加入 `OPENAI_API_KEY=你的OpenAI_API_KEY`
+   - 加入以下環境變數：
+     ```
+     OPENAI_API_KEY=你的OpenAI_API_KEY
+     UPSTASH_REDIS_REST_URL=你的Redis_URL
+     UPSTASH_REDIS_REST_TOKEN=你的Redis_TOKEN
+     ```
 
 3. **啟動開發伺服器**
    ```bash

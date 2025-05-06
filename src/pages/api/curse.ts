@@ -14,10 +14,8 @@ function getLocalCurse(role: string, rage: number) {
 
 // 從 Redis 取得快取
 const getFromRedis = async (key: string) => {
-  console.log("[getRedis]", key);
   const encodedKey = encodeURIComponent(key);
   const res = await redis.get(encodedKey)
-  console.log("[getRedis]", res);
   return res
 };
 

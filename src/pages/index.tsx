@@ -30,7 +30,6 @@ const Home: FC = () => {
   const [curseText, setCurseText] = useState<string>('');
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  console.log('curseText',curseText)
   // 選角畫面
   if (step === 1) {
     return (
@@ -92,7 +91,7 @@ const Home: FC = () => {
           body: JSON.stringify({ role, rage: rage + 1 }),
         });
         const data = await response.json();
-        setCurseText(data.curse.replace('{職位}', role));
+        setCurseText(data.curse);
       } catch (e) {
         console.error('Error fetching curse:', e);
         setCurseText(`詛咒失敗，請重試！`);
