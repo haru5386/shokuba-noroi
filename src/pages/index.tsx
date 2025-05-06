@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Howl } from "howler";
 import type { FC } from "react";
 import type { Item } from "../index.type";
@@ -26,8 +26,6 @@ const defaultRoles = [
   "週五六點說「可以開個小會嗎」的人",
 ];
 
-const punchSound = new Howl({ src: ["/sounds/punch.mp3"] });
-const bombSound = new Howl({ src: ["/sounds/bomb.mp3"] });
 
 const Home: FC = () => {
   const [step, setStep] = useState<number>(1); // 1: 選角, 2: 發洩
@@ -40,6 +38,16 @@ const Home: FC = () => {
   const [curseText, setCurseText] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const punchSoundRef = useRef<Howl | null>(null);
+  const bombSoundRef = useRef<Howl | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      punchSoundRef.current = new Howl({ src: ["/sounds/punch.mp3"] });
+      bombSoundRef.current = new Howl({ src: ["/sounds/bomb.mp3"] });
+    }
+  }, []);
+
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -62,7 +70,7 @@ const Home: FC = () => {
   // 發洩模式
   const handleRageClick = async ({ x, y }: { x: number; y: number }) => {
     if (rage >= 30) return;
-    punchSound.play();
+    punchSoundRef.current?.play();
     setRage(rage + 1);
     setItems([
       ...items,
@@ -90,7 +98,7 @@ const Home: FC = () => {
         setIsLoading(false);
         setShowCurse(true);
       }
-      bombSound.play();
+      bombSoundRef.current?.play();
     }, 1500);
   };
 
